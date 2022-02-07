@@ -87,93 +87,10 @@ const App = props => {
 
   return (
     <Container>
-      <div style={{ height: "20px" }}>{message !== "" && message}</div>
-      <form onSubmit={handleSubmit}>
-        <Columns>
-          <Columns.Column size="three-quarters">
-            <div className="field">
-              <label className="label">Enter Location</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="text"
-                  onChange={handleChange}
-                  value={location}
-                  placeholder="Greece"
-                />
-              </div>
-            </div>
-          </Columns.Column>
-          <Columns.Column>
-            <div className="field">
-              <label className="label">&#160;</label>
-              <div className="control">
-                <Button>View Images</Button>
-              </div>
-            </div>
-          </Columns.Column>
-        </Columns>
-      </form>
-      <div style={{ padding: "7px", height: "75px", textAlign: "center" }}>
-        {images && images.length !== 0 && !image && (
-          <div>Select an image to continue</div>
-        )}
+      <div style={{ height: "20px" }}>
+        Welcome to staq places
       </div>
-      <div>
-        <div className="columns is-vcentered">
-          {images &&
-            images.map((image, i) => {
-              return (
-                <Columns.Column key={image.url}>
-                  <div
-                    className="card"
-                    tabindex={i}
-                    onClick={() => selectImage(image.thumbnail.url)}
-                    key={image.thumbnail.url}
-                  >
-                    <div className="card-image">
-                      <figure className="image is-4by3">
-                        <img src={image.thumbnail.url} />
-                      </figure>
-                    </div>
-                  </div>
-                </Columns.Column>
-              )
-            })}
-        </div>
-      </div>
-      <div style={{ padding: "7px", height: "75px", textAlign: "center" }}>
-        {image && <Button onClick={addLocation}>Add Location</Button>}
-      </div>
-      <Columns>
-        {locations &&
-          locations.map(location => {
-            return (
-              <Columns.Column key={location.location_id}>
-                <Card>
-                  <Columns>
-                    <Columns.Column
-                      size="two-thirds"
-                      style={{ marginLeft: "20px" }}
-                    >
-                      <Heading>{location.location.toUpperCase()}</Heading>
-                    </Columns.Column>
-                    <Columns.Column size={3} style={{ textAlign: "right" }}>
-                      <div onClick={() => handleDelete(location)}>x</div>
-                    </Columns.Column>
-                  </Columns>
-                  <Card.Content>
-                    <div style={{ width: 320 }}>
-                      <Card.Image size="2by1" src={location.image} />
-                    </div>
 
-                    {/* <div onClick={() => handleDelete(location)}>x</div> */}
-                  </Card.Content>
-                </Card>
-              </Columns.Column>
-            )
-          })}
-      </Columns>
     </Container>
   )
 }
